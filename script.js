@@ -1,25 +1,13 @@
 //your JS code hdocument.addEventListener('DOMContentLoaded', () => {
-    const changeButton = document.getElementById('change_button');
-    const resetButton = document.getElementById('reset');
+   document.getElementById('change_button').addEventListener('click', function() {
+    var blockId = document.getElementById('block_id').value;
+    var color = document.getElementById('colour_id').value;
+    document.getElementById(blockId).style.backgroundColor = color;
+});
 
-    changeButton.addEventListener('click', () => {
-        const blockId = document.getElementById('block_id').value;
-        const color = document.getElementById('colour_id').value;
-        resetColors();
-        const block = document.getElementById(blockId);
-        if (block) {
-            block.style.backgroundColor = color;
-        } else {
-            alert('Invalid block ID');
-        }
-    });
-
-    resetButton.addEventListener('click', resetColors);
-
-    function resetColors() {
-        const gridItems = document.querySelectorAll('.grid-item');
-        gridItems.forEach(item => {
-            item.style.backgroundColor = 'transparent';
-        });
+document.getElementById('reset').addEventListener('click', function() {
+    var gridItems = document.getElementsByClassName('grid-item');
+    for(var i = 0; i < gridItems.length; i++) {
+        gridItems[i].style.backgroundColor = 'transparent';
     }
 });
